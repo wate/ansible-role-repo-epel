@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'role epel' do
+describe 'role repo-epel' do
   describe package('epel-release') do
     it { should be_installed }
   end
