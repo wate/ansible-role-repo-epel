@@ -1,13 +1,16 @@
 ---
 language: python
-python:
-  - "2.7"
-  - "3.6"
-services:
-  - docker
+services: docker
+env:
+  global:
+    - ROLE_NAME: repo-epel
 install:
-  - pip install molecule[lint,docker] docker
-script:
+  - pip install molecule yamllint ansible-lint docker
+before_script:
   - molecule --version
   - ansible --version
+  - cd ../
+  - mv ansible-role-$ROLE_NAME $ROLE_NAME
+  - cd $ROLE_NAME
+script:
   - molecule test
