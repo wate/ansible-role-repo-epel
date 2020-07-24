@@ -7,8 +7,6 @@ env:
 install:
   - pip install molecule yamllint ansible-lint docker
 before_script:
-  - molecule --version
-  - ansible --version
   - cd ../
   - mv ansible-role-$ROLE_NAME $ROLE_NAME
   - cd $ROLE_NAME
